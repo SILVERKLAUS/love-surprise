@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mary Muthoni ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+font-family:Poppins;
+color:white;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.85)),
+url("sunset.jpg") center/cover no-repeat;
+}
+
+#name{
+font-family:'Great Vibes',cursive;
+font-size:78px;
+color:#ffd1dc;
+text-shadow:0 0 25px hotpink,0 0 70px #ff6a00;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{opacity:.7}
+to{opacity:1}
+}
+
+.slideshow img{
+width:250px;
+border-radius:25px;
+margin-top:15px;
+box-shadow:0 0 30px pink,0 0 80px #6fa8ff;
+}
+
+button{
+margin-top:20px;
+background:linear-gradient(135deg,#ff0844,#ff9a00);
+border:none;
+padding:20px 55px;
+font-size:24px;
+color:white;
+border-radius:60px;
+cursor:pointer;
+box-shadow:0 0 30px hotpink;
+animation:pulse 1.6s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.15)}
+100%{transform:scale(1)}
+}
+
+#text,#letter{
+margin-top:25px;
+font-size:26px;
+text-align:center;
+max-width:80%;
+text-shadow:0 0 15px pink;
+}
+
+#letter{display:none;}
+
+.float{
+position:absolute;
+animation:rise 3s linear forwards;
+}
+
+@keyframes rise{
+from{transform:translateY(0);opacity:1}
+to{transform:translateY(-260px);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<div id="name">💫✨Mary Muthoni ✨</div>
+
+<div class="slideshow">
+<img id="slide" src="photo1.jpg">
+</div>
+
+<button onclick="startMagic()">Open Your Surprise Baby 🥰🎁</button>
+
+<div id="text"></div>
+<div id="letter"></div>
+
+<audio id="music" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c5b2b01f5.mp3"></audio>
+
+<script>
+
+/* slideshow */
+const photos=["photo1.jpg","photo2.jpg","photo3.jpg"];
+let p=0;
+setInterval(()=>{
+p=(p+1)%photos.length;
+slide.src=photos[p];
+},3000);
+
+/* floating hearts + butterflies */
+function floatLove(){
+setInterval(()=>{
+let f=document.createElement("div");
+f.className="float";
+f.innerHTML=Math.random()>0.5?"❤️":"🦋";
+f.style.left=Math.random()*100+"vw";
+f.style.top="65%";
+f.style.fontSize=(30+Math.random()*40)+"px";
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),3000);
+},180);
+}
+
+/* birthday message typing */
+const msg="Happy 19th Birthday my love 🎂🥰💖 You are my favorite person in the world and the calm in my chaos ❤️and You make my world brighter, my heart calmer, and my days better just by existing 🦋 I’m so grateful for you every single day ❤️";
+let i=0;
+
+function typeMsg(){
+if(i<msg.length){
+text.innerHTML+=msg[i++];
+setTimeout(typeMsg,70);
+}
+}
+
+/* love letter typing line by line */
+const letterLines=[
+"My beautiful Baby 🥰❤️",
+"From the moment you came into my life, everything became brighter.",
+"Your smile feels like home, your laugh heals my heart.",
+"I don’t just love you… I choose you every day.",
+"You are my safespace😊, my peace, my forever 🦋♾️💞",
+"Happy 19th Birthday my love 🥳❤️"
+];
+
+let l=0;
+function typeLetter(){
+if(l<letterLines.length){
+letter.innerHTML+=letterLines[l++]+"<br><br>";
+setTimeout(typeLetter,900);
+}
+}
+
+/* start everything */
+function startMagic(){
+music.play();
+typeMsg();
+floatLove();
+setTimeout(()=>{
+letter.style.display="block";
+typeLetter();
+},5000);
+}
+
+</script>
+</body>
+</html>
